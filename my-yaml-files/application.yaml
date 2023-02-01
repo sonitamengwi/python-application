@@ -1,0 +1,32 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: python-app-deployment
+  namespace: argocd
+spec:
+  project: default
+  source:
+    repoURL: https://github.com/user/python-app-repo.git
+    path: windows/k8s
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: default
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+  healthChecks:
+  - name: deployment-health
+    initialDelaySeconds: 30
+    path: /health
+    port: 8080
+    scheme: HTTP
+    timeoutSeconds: 10
+  resourceOverrides:
+  - group: apps
+    kind: Deployment
+    name: python-app-deployment
+  - group: v1
+    kind: Service
+    name: python-app-service
+
