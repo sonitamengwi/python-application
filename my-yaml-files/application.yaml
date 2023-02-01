@@ -6,7 +6,7 @@ metadata:
 spec:
   project: default
   source:
-    repoURL: https://github.com/user/python-app-repo.git
+    repoURL: https://github.com/sonitamengwi/python-app-deployment
     path: windows/k8s
   destination:
     server: https://kubernetes.default.svc
