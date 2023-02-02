@@ -2,19 +2,19 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: python.py
+  name: myapp
 spec:
   selector:
     matchLabels:
-      app: python.py
+      app: myapp
   replicas: 3
   template:
     metadata:
       labels:
-        app: python.py
+        app: myapp
     spec:
       containers:
-      - name: python.py
+      - name: python-app
         image: sonitamuluh/python.py:1.1
         ports:
         - containerPort: 8080
