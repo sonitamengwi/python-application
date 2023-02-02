@@ -4,7 +4,7 @@ kind: Deployment
 metadata:
   name: python-application-deployment
 spec:
-  replicas: 1
+  replicas: 3
   selector:
     matchLabels:
       app: python-application
@@ -15,7 +15,39 @@ spec:
     spec:
       containers:
       - name: python-application-container
-        image: python:1.1
+        image: myUserName/python:1.1
         command: ["python", "-u", "python-application.py"]
         ports:
         - containerPort: 8080
+         volumeMounts:
+        - name: python-appllication-persistentVolume
+          mountPath: /usr/src/app/data
+      volumes:
+      - name: persistentVolume
+        persistentVolumeClaim:
+          claimName: my-pvc
+         
+---  
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+name: python-appllication-persistentVolume
+spec:
+capacity:
+storage: 6Gi
+accessModes:
+- ReadWriteOnce
+hostPath:
+path: "/mnt/data"
+
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: my-pvc
+spec:
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 3Gi          
