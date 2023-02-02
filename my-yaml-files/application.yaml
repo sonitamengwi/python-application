@@ -9,7 +9,7 @@ spec:
   source: 
     repoURL: https://github.com/sonitamengwi/python-argocd-deploy
     targetRevision: HEAD
-    path: my-yaml-file
+    path: my-yaml-files
   destination:
     server: https://kubernetes.default.svc
     namespace: default
