@@ -7,7 +7,7 @@ spec:
   selector:
     matchLabels:
       app: myapp
-  replicas:2
+  replicas: 2
   template:
     metadata:
       labels:
@@ -18,4 +18,3 @@ spec:
         image: python:3.9
         ports:
         - containerPort: 8080
-        command: ["python", "app.py"]
