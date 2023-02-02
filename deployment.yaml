@@ -2,19 +2,20 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: myapp
+  name: python-application-deployment
 spec:
+  replicas: 1
   selector:
     matchLabels:
-      app: myapp
-  replicas: 2
+      app: python-application
   template:
     metadata:
       labels:
-        app: myapp
+        app: python-application
     spec:
       containers:
-      - name: myapp
-        image: dockerhubreponame\python:1.1
+      - name: python-application-container
+        image: python:1.1
+        command: ["python", "-u", "python-application.py"]
         ports:
         - containerPort: 8080
