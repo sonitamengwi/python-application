@@ -14,7 +14,7 @@ spec:
         app: myapp
     spec:
       containers:
-      - name: python-app
+      - name: myapp
         image: python:3.9
         ports:
         - containerPort: 8080
