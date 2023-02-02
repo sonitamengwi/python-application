@@ -7,7 +7,7 @@ spec:
   project: default
 
   source: 
-    repoURL: https://github.com/Sonitamuluh/python-appllication-deployment
+    repoURL: https://github.com/Sonitamuluh/python-app-argocd
     targetRevision: HEAD
     path: my-yaml-file
   destination:
